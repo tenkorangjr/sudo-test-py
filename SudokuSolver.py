@@ -58,14 +58,3 @@ class SudokuSolver:
         """Get the board being solved"""
 
         return self.board
-
-
-if __name__ == "__main__":
-    board = Board()
-    board.readFile("../sudo-test-py/board.txt")
-    sudokuSolver = SudokuSolver(board)
-
-    print(sudokuSolver.board)
-
-    sudokuSolver.solve()
-    print(sudokuSolver.board)
