@@ -13,8 +13,8 @@ class SudokuSolver:
             for col in range(0, 9):
                 if int(self.board.getCell(row, col).getValue()) == 0:
                     new_val = self.findNextValue(self.board.getCell(row, col))
+                    self.board.getCell(row, col).setValue(new_val)
                     if new_val != 0:
-                        self.board.getCell(row, col).setValue(new_val)
                         return self.board.getCell(row, col)
                     else:
                         return None
