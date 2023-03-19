@@ -239,37 +239,3 @@ class Stack:
         """Get the size of the stack"""
 
         return self.arr.size
-
-
-if __name__ == "__main__":
-    cell = Cell(0, 0, 10, True)
-    cell1 = Cell(3, 2, 20, True)
-    cell2 = Cell(2, 1, 50, False)
-
-    print(f"{cell.getValue()} == 10")
-    print(f"{cell1.getValue()} == 20")
-    print(f"{cell2.getValue()} == 50")
-
-    assert (cell != None)
-    assert (cell1 != None)
-    assert (cell2 != None)
-
-    print(f"{type(cell.getValue())} == int")
-    print(f"{type(cell1.getValue())} == int")
-    print(f"{type(cell2.getValue())} == int")
-
-    print(f"{cell.getRow()} == 0")
-    print(f"{cell1.getRow()} == 3")
-    print(f"{cell2.getRow()} == 2")
-
-    print(f"{type(cell.getRow())} == int")
-    print(f"{type(cell1.getRow())} == int")
-    print(f"{type(cell2.getRow())} == int")
-
-    print(f"{cell.getCol()} == 0")
-    print(f"{cell1.getCol()} == 2")
-    print(f"{cell2.getCol()} == 1")
-
-    print(f"{type(cell.getCol())} == int")
-    print(f"{type(cell1.getCol())} == int")
-    print(f"{type(cell2.getCol())} == int")
