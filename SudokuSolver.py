@@ -1,10 +1,56 @@
 from Starters import *
+import time
 
 
 class SudokuSolver:
 
     def __init__(self, board: Board) -> None:
         self.board = board
+
+    def solveAllSolutions(self) -> list:
+        """Get a list of all the solutions"""
+
+        stack = []
+        output = []
+
+        while (len(stack) < self.board.unspecifiedCells):
+
+            next = self.findNextCell()
+
+            while (not next and len(stack) > 0):
+                temp: Cell = stack.pop()
+                tempVal = self.findNextValue(temp)
+                temp.setValue(tempVal)
+                if tempVal != 0:
+                    next = temp
+
+            if (not next):
+                return False
+            else:
+                stack.append(next)
+                time.sleep(0.3)
+
+                if len(stack) == self.board.unspecifiedCells:
+                    output.append(stack[:])
+                    last: Cell = stack.pop()
+                    last.setValue(0)
+                    next: Cell = stack.pop()
+                    nextVal = self.findNextValue(next)
+                    next.setValue(nextVal)
+                    while (nextVal == 0):
+                        next = stack.pop()
+                        nextVal = self.findNextValue(next)
+                        next.setValue(nextVal)
+
+                    if (len(stack) == 1):
+                        temp = stack.pop()
+                        tempVal = self.findNextValue(temp)
+                        temp.setValue(tempVal)
+
+                        if not tempVal:  # tempVal is zero
+                            return True
+
+        return True
 
     def findNextCell(self) -> Cell:
         """Find the next cell to be checked and modified"""
@@ -58,3 +104,12 @@ class SudokuSolver:
         """Get the board being solved"""
 
         return self.board
+
+
+if __name__ == "__main__":
+    board = Board()
+    board.readFile("board.txt")
+    print(board)
+    solver = SudokuSolver(board)
+    solver.solveAllSolutions()
+    print(board)
